@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="hi-IN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time & Date India — World Clock, Calendar, Timer | समय और तारीख</title>
+  <meta name="description" content="India ka #1 time website. World clock, timezone converter, calendar 2026, stopwatch, countdown timer, sunrise sunset time. Free online tools.">
+  <meta name="keywords" content="world clock india, time zone converter, IST time, calendar 2026, stopwatch online, countdown timer, sunrise time india, time and date">
+  <meta name="author" content="TimeDate India">
+  <meta property="og:title" content="Time & Date India — World Clock, Calendar, Timer">
+  <meta property="og:description" content="India ka #1 free time & date website. World clock, calendar, stopwatch, countdown, sun times aur bahut kuch!">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://yoursite.com/">
+
+  <!-- =====================================================
+       GOOGLE ADSENSE — Apna Publisher ID yahan daalo
+       Step 1: google.com/adsense pe account banao
+       Step 2: Approve hone ke baad yeh script milegi
+       Step 3: ca-pub-XXXXXXXXXXXXXXXX ki jagah apna ID daalo
+  ====================================================== -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #0d2137;
+      --navy2: #1a3a5c;
+      --accent: #1e8fe1;
+      --accent2: #5bc8f5;
+      --gold: #f0a500;
+      --white: #ffffff;
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --text: #1a2a3a;
+      --muted: #607080;
+      --border: #dde4ec;
+      --success: #16a34a;
+      --radius: 12px;
+      --shadow: 0 2px 12px rgba(13,33,55,0.10);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      background: var(--navy);
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center;
+      padding: 0 20px; height: 56px; gap: 8px;
+    }
+    .logo {
+      font-size: 20px; font-weight: 600;
+      color: var(--white); text-decoration: none;
+      margin-right: 24px; letter-spacing: -0.5px;
+      white-space: nowrap;
+    }
+    .logo span { color: var(--accent2); }
+    .nav-links {
+      display: flex; gap: 0; height: 56px; overflow-x: auto;
+    }
+    .nav-links a {
+      color: #a0b8cc; font-size: 13px; font-weight: 500;
+      padding: 0 14px; display: flex; align-items: center; gap: 5px;
+      text-decoration: none; border-bottom: 2px solid transparent;
+      transition: all 0.15s; white-space: nowrap;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--white); border-bottom-color: var(--accent2);
+      background: rgba(255,255,255,0.06);
+    }
+    .nav-links a svg { width:15px; height:15px; flex-shrink:0; }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #0a1f35 50%, #0d2d4a 100%);
+      padding: 36px 20px 28px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(30,143,225,0.15) 0%, transparent 60%);
+    }
+    .hero-inner { max-width: 1200px; margin: 0 auto; position: relative; }
+    .hero-grid { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
+    .hero-label {
+      font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--accent2); font-weight: 500; margin-bottom: 8px;
+    }
+    .hero-time {
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(48px, 8vw, 80px);
+      font-weight: 400; color: var(--white);
+      letter-spacing: -2px; line-height: 1;
+    }
+    .hero-date { font-size: 16px; color: #8aaec8; margin-top: 8px; font-weight: 400; }
+    .hero-loc {
+      margin-top: 6px; display: flex; align-items: center; gap: 6px;
+      font-size: 13px; color: var(--accent2);
+    }
+    .hero-badges { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+    .hero-badge {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px; padding: 8px 14px;
+      text-align: center; min-width: 100px;
+    }
+    .hero-badge-val { font-family: 'DM Mono', monospace; font-size: 18px; color: var(--white); font-weight: 500; }
+    .hero-badge-lbl { font-size: 10px; color: #7a9ab5; margin-top: 2px; letter-spacing: 0.5px; }
+
+    /* ===== AD SLOT ===== */
+    .ad-slot {
+      background: var(--card);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); font-size: 12px;
+      text-align: center; padding: 12px;
+    }
+    .ad-slot-top { height: 90px; margin: 16px auto; max-width: 728px; }
+    .ad-slot-sidebar { min-height: 250px; width: 100%; }
+    .ad-slot-banner { height: 60px; margin: 12px 0; }
+
+    /* ===== MAIN LAYOUT ===== */
+    .main-wrap { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    .layout { display: grid; grid-template-columns: 1fr 300px; gap: 20px; }
+    .content-area { display: flex; flex-direction: column; gap: 16px; }
+    .sidebar { display: flex; flex-direction: column; gap: 16px; }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      padding: 20px;
+    }
+    .card-title {
+      font-size: 11px; font-weight: 600; letter-spacing: 1.2px;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 16px; display: flex; align-items: center; gap: 7px;
+    }
+    .card-title svg { width:16px; height:16px; color: var(--accent); }
+
+    /* ===== WORLD CLOCK ===== */
+    .wc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+    .wc-item {
+      background: var(--bg); border-radius: 10px;
+      padding: 12px 14px; border: 1px solid var(--border);
+      transition: box-shadow 0.15s;
+    }
+    .wc-item:hover { box-shadow: 0 4px 16px rgba(13,33,55,0.12); }
+    .wc-flag { font-size: 20px; margin-bottom: 4px; }
+    .wc-city { font-size: 12px; color: var(--muted); font-weight: 500; }
+    .wc-time-val {
+      font-family: 'DM Mono', monospace;
+      font-size: 22px; font-weight: 500; color: var(--text);
+      margin: 2px 0; letter-spacing: -0.5px;
+    }
+    .wc-diff { font-size: 11px; color: var(--accent); font-weight: 500; }
+    .wc-tz { font-size: 10px; color: var(--muted); margin-top: 2px; }
+
+    /* ===== TABS ===== */
+    .tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+    .tab {
+      font-size: 13px; font-weight: 500; padding: 8px 16px;
+      cursor: pointer; color: var(--muted); border-bottom: 2px solid transparent;
+      margin-bottom: -1px; transition: all 0.15s; background: none; border-top: none; border-left: none; border-right: none;
+    }
+    .tab:hover { color: var(--text); }
+    .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ===== TIMER ===== */
+    .timer-big {
+      font-family: 'DM Mono', monospace;
+      font-size: 52px; font-weight: 400;
+      text-align: center; letter-spacing: -1px;
+      color: var(--text); margin: 8px 0; line-height: 1;
+    }
+    .timer-progress {
+      height: 4px; background: var(--border); border-radius: 2px; margin: 10px 0;
+    }
+    .timer-progress-fill {
+      height: 100%; background: var(--accent); border-radius: 2px;
+      transition: width 0.3s; width: 0%;
+    }
+    .btn-row { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
+    .btn {
+      padding: 9px 22px; border-radius: 8px; font-size: 14px;
+      font-weight: 500; cursor: pointer; border: none; transition: all 0.15s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .btn-blue { background: var(--accent); color: #fff; }
+    .btn-blue:hover { background: #1678c2; }
+    .btn-gray { background: var(--bg); color: var(--text); border: 1px solid var(--border); }
+    .btn-gray:hover { background: #e2e8f0; }
+    .btn-red { background: #e24b4a; color: #fff; }
+    .btn-red:hover { background: #c23a39; }
+    .timer-inputs { display: flex; gap: 8px; margin-bottom: 14px; }
+    .timer-input-group { flex: 1; text-align: center; }
+    .timer-input-group label { display: block; font-size: 10px; color: var(--muted); margin-bottom: 4px; letter-spacing: 0.5px; }
+    .timer-input-group input {
+      width: 100%; text-align: center; padding: 8px 4px;
+      border: 1px solid var(--border); border-radius: 8px;
+      font-size: 22px; font-family: 'DM Mono', monospace;
+      color: var(--text); background: var(--bg); font-weight: 500;
+    }
+
+    /* ===== CALENDAR ===== */
+    .cal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .cal-month-name { font-size: 15px; font-weight: 600; color: var(--text); }
+    .cal-nav-btn {
+      width: 30px; height: 30px; border-radius: 6px; border: 1px solid var(--border);
+      background: var(--bg); cursor: pointer; font-size: 16px; color: var(--muted);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cal-nav-btn:hover { background: var(--border); }
+    .cal-grid-cal { display: grid; grid-template-columns: repeat(7,1fr); gap: 2px; }
+    .cal-dn { font-size: 10px; color: var(--muted); text-align: center; padding: 4px 0; font-weight: 600; }
+    .cal-d {
+      font-size: 13px; text-align: center; padding: 6px 2px;
+      border-radius: 6px; cursor: pointer; color: var(--text);
+      transition: all 0.1s;
+    }
+    .cal-d:hover { background: var(--bg); }
+    .cal-d.today { background: var(--accent); color: #fff; font-weight: 600; }
+    .cal-d.other { color: #c0ccd8; }
+    .cal-d.weekend { color: #e05; }
+    .cal-d.today.weekend { color: #fff; }
+
+    /* ===== COUNTDOWN ===== */
+    .cd-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-top: 12px; }
+    .cd-box {
+      background: var(--navy); border-radius: 10px;
+      text-align: center; padding: 12px 4px;
+    }
+    .cd-val {
+      font-family: 'DM Mono', monospace;
+      font-size: 28px; font-weight: 500; color: var(--white); line-height: 1;
+    }
+    .cd-lbl { font-size: 10px; color: #7a9ab5; margin-top: 4px; letter-spacing: 0.5px; text-transform: uppercase; }
+    .input-row { display: flex; gap: 8px; }
+    .input-row input, .input-row select {
+      flex: 1; padding: 8px 12px; border: 1px solid var(--border);
+      border-radius: 8px; font-size: 14px; color: var(--text);
+      background: var(--bg); font-family: 'DM Sans', sans-serif;
+    }
+
+    /* ===== SUN ===== */
+    .sun-row-d { display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: center; margin: 8px 0; }
+    .sun-item-d { text-align: center; }
+    .sun-val-d { font-size: 22px; font-weight: 600; color: var(--text); }
+    .sun-lbl-d { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .sun-arc {
+      height: 8px; background: var(--border); border-radius: 4px;
+      margin: 12px 0; position: relative; overflow: hidden;
+    }
+    .sun-arc-fill {
+      height: 100%; border-radius: 4px;
+      background: linear-gradient(90deg, #f5a623, #f7c84a);
+    }
+    .moon-row { display: flex; align-items: center; gap: 12px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
+    .moon-emoji { font-size: 36px; }
+    .moon-name { font-size: 14px; font-weight: 600; color: var(--text); }
+    .moon-sub { font-size: 12px; color: var(--muted); margin-top: 3px; }
+
+    /* ===== DATE CALC ===== */
+    .calc-result {
+      background: linear-gradient(135deg, #e6f4ff, #f0faff);
+      border: 1px solid #b8d8f0;
+      border-radius: 10px; padding: 14px;
+      text-align: center; margin-top: 12px;
+    }
+    .calc-result-big { font-size: 28px; font-weight: 700; color: var(--accent); }
+    .calc-result-sub { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+    /* ===== TZ CONVERTER ===== */
+    .tz-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: center; margin-bottom: 12px; }
+    .tz-arrow { font-size: 20px; color: var(--muted); text-align: center; }
+    .tz-result-box {
+      background: var(--bg); border-radius: 10px;
+      padding: 14px; text-align: center;
+      border: 1px solid var(--border);
+    }
+    .tz-result-time { font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500; color: var(--text); }
+    .tz-result-zone { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+    /* ===== HOLIDAYS ===== */
+    .holiday-list { display: flex; flex-direction: column; gap: 8px; }
+    .holiday-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 12px; border-radius: 8px;
+      background: var(--bg); border: 1px solid var(--border);
+    }
+    .holiday-date-badge {
+      background: var(--navy); color: var(--white);
+      border-radius: 6px; padding: 4px 8px; text-align: center;
+      min-width: 44px;
+    }
+    .holiday-date-d { font-size: 16px; font-weight: 600; }
+    .holiday-date-m { font-size: 9px; color: #7a9ab5; text-transform: uppercase; }
+    .holiday-name { font-size: 13px; font-weight: 500; color: var(--text); }
+    .holiday-days { font-size: 11px; color: var(--accent); margin-top: 2px; }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--navy); color: #7a9ab5;
+      padding: 30px 20px; margin-top: 32px;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .footer-logo { font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+    .footer-logo span { color: var(--accent2); }
+    .footer-desc { font-size: 13px; line-height: 1.6; }
+    .footer-col-title { font-size: 12px; font-weight: 600; color: var(--white); margin-bottom: 10px; letter-spacing: 0.5px; }
+    .footer-col a { display: block; font-size: 13px; color: #7a9ab5; text-decoration: none; margin-bottom: 6px; }
+    .footer-col a:hover { color: var(--accent2); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 16px; font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .footer-links-bottom a { color: #7a9ab5; text-decoration: none; margin-left: 16px; }
+    .footer-links-bottom a:hover { color: var(--white); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .hero-badges { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .nav-links a span { display: none; }
+      .timer-big { font-size: 40px; }
+      .hero-time { font-size: 48px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .cd-val { font-size: 22px; }
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity:0; transform: translateY(16px); }
+      to { opacity:1; transform: translateY(0); }
+    }
+    .card { animation: fadeUp 0.4s ease both; }
+    .card:nth-child(1) { animation-delay: 0.05s; }
+    .card:nth-child(2) { animation-delay: 0.10s; }
+    .card:nth-child(3) { animation-delay: 0.15s; }
+    .card:nth-child(4) { animation-delay: 0.20s; }
+    .card:nth-child(5) { animation-delay: 0.25s; }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#" class="logo">Time<span>&</span>Date</a>
+    <div class="nav-links">
+      <a href="#world-clock" class="active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg>
+        <span>World Clock</span>
+      </a>
+      <a href="#timers">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <span>Timer</span>
+      </a>
+      <a href="#calendar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        <span>Calendar</span>
+      </a>
+      <a href="#countdown">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        <span>Countdown</span>
+      </a>
+      <a href="#sun">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <span>Sun</span>
+      </a>
+      <a href="#calculator">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h8M8 14h4"/></svg>
+        <span>Calculator</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-label">Aapka Local Time</div>
+        <div class="hero-time" id="heroTime">--:--:--</div>
+        <div class="hero-date" id="heroDate">Loading...</div>
+        <div class="hero-loc">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Ajmer, Rajasthan, India &nbsp;·&nbsp; IST (UTC+5:30)
+        </div>
+      </div>
+      <div class="hero-badges">
+        <div class="hero-badge">
+          <div class="hero-badge-val" id="heroWeekNum">--</div>
+          <div class="hero-badge-lbl">Week No.</div>
+        </div>
+        <div class="hero-badge">
+          <div class="hero-badge-val" id="heroDayOfYear">--</div>
+          <div class="hero-badge-lbl">Day of Year</div>
+        </div>
+        <div class="hero-badge">
+          <div class="hero-badge-val" id="heroUTC">--:--</div>
+          <div class="hero-badge-lbl">UTC Time</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== TOP AD ===== -->
+<div style="max-width:1200px;margin:16px auto;padding:0 20px;">
+  <!-- AdSense Top Banner (728x90) — Approve ke baad yahan code aayega -->
+  <div class="ad-slot ad-slot-top">
+    📢 Advertisement Space — Google AdSense (728×90 Leaderboard)
+  </div>
+</div>
+
+<main class="main-wrap">
+  <div class="layout">
+    <div class="content-area">
+
+      <!-- ===== WORLD CLOCK ===== -->
+      <section class="card" id="world-clock" aria-label="World Clock">
+        <div class="card-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg>
+          World Clock
+        </div>
+        <div class="wc-grid" id="worldClockGrid"></div>
+      </section>
+
+      <!-- ===== TIMEZONE CONVERTER ===== -->
+      <section class="card" aria-label="Timezone Converter">
+        <div class="card-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+          Timezone Converter
+        </div>
+        <div class="tz-row">
+          <div>
+            <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:4px">From</label>
+            <select id="tzFrom" style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:8px;font-size:13px;color:var(--text);background:var(--bg)">
+              <option value="Asia/Kolkata">India (IST)</option>
+              <option value="America/New_York">New York (EST)</option>
+              <option value="America/Los_Angeles">Los Angeles (PST)</option>
+              <option value="Europe/London">London (GMT)</option>
+              <option value="Europe/Paris">Paris (CET)</option>
+              <option value="Asia/Dubai">Dubai (GST)</option>
+              <option value="Asia/Tokyo">Tokyo (JST)</option>
+              <option value="Asia/Singapore">Singapore (SGT)</option>
+              <option value="Australia/Sydney">Sydney (AEST)</option>
+              <option value="UTC">UTC</option>
+            </select>
+          </div>
+          <div class="tz-arrow">⇄</div>
+          <div>
+            <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:4px">To</label>
+            <select id="tzTo" style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:8px;font-size:13px;color:var(--text);background:var(--bg)">
+              <option value="America/New_York">New York (EST)</option>
+              <option value="Asia/Kolkata">India (IST)</option>
+              <option value="America/Los_Angeles">Los Angeles (PST)</option>
+              <option value="Europe/London">London (GMT)</option>
+              <option value="Europe/Paris">Paris (CET)</option>
+              <option value="Asia/Dubai">Dubai (GST)</option>
+              <option value="Asia/Tokyo">Tokyo (JST)</option>
+              <option value="Asia/Singapore">Singapore (SGT)</option>
+              <option value="Australia/Sydney">Sydney (AEST)</option>
+              <option value="UTC">UTC</option>
+            </select>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;margin-bottom:12px;">
+          <input type="time" id="tzTime" style="flex:1;padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;color:var(--text);background:var(--bg)">
+          <button class="btn btn-blue" onclick="convertTZ()">Convert</button>
+        </div>
+        <div class="tz-result-box" id="tzResult">
+          <div style="color:var(--muted);font-size:13px">Upar se time select karke Convert dabao</div>
+        </div>
+      </section>
+
+      <!-- ===== STOPWATCH & TIMER ===== -->
+      <section class="card" id="timers" aria-label="Stopwatch and Timer">
+        <div class="card-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          Stopwatch &amp; Timer
+        </div>
+        <div class="tabs">
+          <button class="tab active" onclick="openTab(event,'sw')">⏱ Stopwatch</button>
+          <button class="tab" onclick="openTab(event,'tmr')">⏲ Timer</button>
+        </div>
+
+        <!-- Stopwatch -->
+        <div class="tab-panel active" id="tab-sw">
+          <div class="timer-big" id="swDisplay">00:00:00.0</div>
+          <div class="timer-progress"><div class="timer-progress-fill" id="swProgress"></div></div>
+          <div id="swLaps" style="max-height:100px;overflow-y:auto;margin:8px 0;font-size:12px;color:var(--muted)"></div>
+          <div class="btn-row">
+            <button class="btn btn-blue" id="swBtn" onclick="swToggle()">▶ Start</button>
+            <button class="btn btn-gray" onclick="swLap()" id="swLapBtn" disabled>Lap</button>
+            <button class="btn btn-gray" onclick="swReset()">Reset</button>
+          </div>
+        </div>
+
+        <!-- Timer -->
+        <div class="tab-panel" id="tab-tmr">
+          <div class="timer-inputs">
+            <div class="timer-input-group"><label>HH</label><input type="number" id="tH" min="0" max="99" value="0"></div>
+            <div class="timer-input-group"><label>MM</label><input type="number" id="tM" min="0" max="59" value="5"></div>
+            <div class="timer-input-group"><label>SS</label><input type="number" id="tS" min="0" max="59" value="0"></div>
+          </div>
+          <div class="timer-big" id="timerDisp">00:05:00</div>
+          <div class="timer-progress"><div class="timer-progress-fill" id="timerProg"></div></div>
+          <div class="btn-row">
+            <button class="btn btn-blue" id="timerBtn" onclick="timerToggle()">▶ Start</button>
+            <button class="btn btn-gray" onclick="timerReset()">Reset</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CALENDAR ===== -->
+      <section class="card" id="calendar" aria-label="Calendar">
+        <div class="card-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Calendar 2026
+        </div>
+        <div class="cal-head">
+          <button class="cal-nav-btn" onclick="calNav(-1)">‹</button>
+          <span class="cal-month-name" id="calMonthName"></span>
+          <button class="cal-nav-btn" onclick="calNav(1)">›</button>
+        </div>
+        <div class="cal-grid-cal" id="calGridEl"></div>
+        <div id="calSelected" style="margin-top:12px;font-size:13px;color:var(--accent);text-align:center"></div>
+      </section>
+
+      <!-- ===== COUNTDOWN ===== -->
+      <section class="card" id="countdown" aria-label="Countdown Timer">
+        <div class="card-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          Countdown to Date
+        </div>
+        <div class="input-row" style="margin-bottom:10px;">
+          <input type="text" id="cdTitle" placeholder="Event ka naam (e.g. Diwali)" style="flex:1;padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;color:var(--text);background:var(--bg)">
+        </div>
+        <div class="input-row">
+          <input type="date" id="cdDate" style="flex:1;padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;color:var(--text);background:var(--bg)">
+          <input type="time" id="cdTime" value="00:00" style="flex:1;padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;color:var(--text);background:var(--bg)">
+          <button class="btn btn-blue" onclick="startCD()">Go</button>
+        </div>
+        <div class="cd-grid" id="cdGrid">
+          <div class="cd-box"><div class="cd-val" id="cdD">--</div><div class="cd-lbl">Days</div></div>
+          <div class="cd-box"><div class="cd-val" id="cdH">--</div><div class="cd-lbl">Hours</div></div>
+          <div class="cd-box"><div class="cd-val" id="cdM">--</div><div class="cd-lbl">Min</div></div>
+          <div class="cd-box"><div class="cd-val" id="cdS">--</div><div class="cd-lbl">Sec</div></div>
+        </div>
+        <div id="cdEventName" style="text-align:center;font-size:13px;color:var(--muted);margin-top:10px;font-weight:500"></div>
+      </section>
+
+      <!-- ===== AD MID ===== -->
+      <!-- AdSense Rectangle (336x280) -->
+      <div class="ad-slot" style="min-height:280px;">
+        📢 Advertisement Space — Google AdSense (336×280 Rectangle)
+      </div>
+
+      <!-- ===== SUN & MOON ===== -->
+      <section class="card" id="sun" aria-label="Sun and Moon Times">
+        <div class="card-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          Sun &amp; Moon — Ajmer, Rajasthan
+        </div>
+        <div class="sun-row-d">
+          <div class="sun-item-d">
+            <div style="font-size:24px;margin-bottom:4px">🌅</div>
+            <div class="sun-val-d">5:48 AM</div>
+            <div class="sun-lbl-d">Sunrise</div>
+          </div>
+          <div class="sun-item-d">
+            <div style="font-size:13px;color:var(--muted)">Day Length</div>
+            <div style="font-size:20px;font-weight:700;color:var(--accent)" id="sunDayLen">13h 26m</div>
+            <div style="font-size:11px;color:var(--muted)" id="sunNowTime"></div>
+          </div>
+          <div class="sun-item-d">
+            <div style="font-size:24px;margin-bottom:4px">🌇</div>
+            <div class="sun-val-d">7:14 PM</div>
+            <div class="sun-lbl-d">Sunset</div>
+          </div>
+        </div>
+        <div class="sun-arc">
+          <div class="sun-arc-fill" id="sunArcFill" style="width:0%"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);">
+          <span>Dawn 5:21 AM</span>
+          <span>Solar Noon 12:31 PM</span>
+          <span>Dusk 7:41 PM</span>
+        </div>
+        <div class="moon-row">
+          <div class="moon-emoji" id="moonEmoji">🌔</div>
+          <div>
+            <div class="moon-name" id="moonName">Waxing Gibbous</div>
+            <div class="moon-sub">Moonrise: 2:22 PM &nbsp;·&nbsp; Moonset: 1:38 AM</div>
+            <div class="moon-sub" id="moonPct"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== DATE CALCULATOR ===== -->
+      <section class="card" id="calculator" aria-label="Date Calculator">
+        <div class="card-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h8M8 14h4"/></svg>
+          Date Calculator
+        </div>
+        <div class="tabs" style="margin-bottom:16px">
+          <button class="tab active" onclick="openTab(event,'dc-dur')">Duration</button>
+          <button class="tab" onclick="openTab(event,'dc-add')">Add/Subtract</button>
+        </div>
+        <div class="tab-panel active" id="tab-dc-dur">
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div>
+              <label style="font-size:12px;color:var(--muted);display:block;margin-bottom:4px">From:</label>
+              <input type="date" id="dc1" style="width:100%;padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;color:var(--text);background:var(--bg)">
+            </div>
+            <div>
+              <label style="font-size:12px;color:var(--muted);display:block;margin-bottom:4px">To:</label>
+              <input type="date" id="dc2" style="width:100%;padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;color:var(--text);background:var(--bg)">
+            </div>
+            <button class="btn btn-blue" onclick="calcDuration()">Calculate Duration</button>
+            <div class="calc-result" id="dcResult" style="display:none">
+              <div class="calc-result-big" id="dcDays"></div>
+              <div class="calc-result-sub" id="dcDetail"></div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-panel" id="tab-dc-add">
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div>
+              <label style="font-size:12px;color:var(--muted);display:block;margin-bottom:4px">Start Date:</label>
+              <input type="date" id="addDate" style="width:100%;padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;color:var(--text);background:var(--bg)">
+            </div>
+            <div style="display:flex;gap:8px">
+              <select id="addOp" style="padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;color:var(--text);background:var(--bg)">
+                <option value="add">Add (+)</option>
+                <option value="sub">Subtract (−)</option>
+              </select>
+              <input type="number" id="addNum" min="0" value="30" style="flex:1;padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;color:var(--text);background:var(--bg)">
+              <select id="addUnit" style="padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;color:var(--text);background:var(--bg)">
+                <option value="day">Days</option>
+                <option value="week">Weeks</option>
+                <option value="month">Months</option>
+                <option value="year">Years</option>
+              </select>
+            </div>
+            <button class="btn btn-blue" onclick="calcAdd()">Calculate</button>
+            <div class="calc-result" id="addResult" style="display:none">
+              <div class="calc-result-big" id="addResultDate"></div>
+              <div class="calc-result-sub" id="addResultDay"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- end content-area -->
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar">
+
+      <!-- Sidebar Ad -->
+      <div class="ad-slot ad-slot-sidebar">
+        📢 Advertisement<br>Google AdSense<br>(300×250 Rectangle)
+      </div>
+
+      <!-- Upcoming Holidays -->
+      <div class="card">
+        <div class="card-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Upcoming Holidays
+        </div>
+        <div class="holiday-list" id="holidayList"></div>
+      </div>
+
+      <!-- Another Sidebar Ad -->
+      <div class="ad-slot ad-slot-sidebar">
+        📢 Advertisement<br>Google AdSense<br>(300×600 Half Page)
+      </div>
+
+    </aside>
+  </div>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Time<span>&</span>Date</div>
+        <div class="footer-desc">India ka best free time & date resource. World clock, timezone converter, calendar, timers, sun times aur bahut kuch — bilkul free.</div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Tools</div>
+        <a href="#world-clock">World Clock</a>
+        <a href="#timers">Stopwatch</a>
+        <a href="#timers">Timer</a>
+        <a href="#countdown">Countdown</a>
+        <a href="#calculator">Date Calculator</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Information</div>
+        <a href="#sun">Sunrise/Sunset</a>
+        <a href="#calendar">Calendar 2026</a>
+        <a href="#sun">Moon Phases</a>
+        <a href="#">Time Zones</a>
+        <a href="#">Holidays India</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Company</div>
+        <a href="#">About Us</a>
+        <a href="#">Contact</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Advertise</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Time&Date India. All rights reserved.</span>
+      <div class="footer-links-bottom">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+// ---- Utility ----
+function pad2(n){return String(Math.floor(n)).padStart(2,'0');}
+
+// ---- Hero Clock ----
+function updateHero(){
+  const now=new Date();
+  const ist=new Date(now.toLocaleString('en-US',{timeZone:'Asia/Kolkata'}));
+  const h=ist.getHours(),m=ist.getMinutes(),s=ist.getSeconds();
+  document.getElementById('heroTime').textContent=pad2(h)+':'+pad2(m)+':'+pad2(s);
+  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('heroDate').textContent=days[ist.getDay()]+', '+ist.getDate()+' '+months[ist.getMonth()]+' '+ist.getFullYear();
+  // Week number
+  const startOfYear=new Date(ist.getFullYear(),0,1);
+  const weekNum=Math.ceil(((ist-startOfYear)/86400000+startOfYear.getDay()+1)/7);
+  document.getElementById('heroWeekNum').textContent=weekNum;
+  // Day of year
+  const dayOfYear=Math.ceil((ist-startOfYear)/86400000)+1;
+  document.getElementById('heroDayOfYear').textContent=dayOfYear;
+  // UTC
+  const utcH=now.getUTCHours(),utcM=now.getUTCMinutes();
+  document.getElementById('heroUTC').textContent=pad2(utcH)+':'+pad2(utcM);
+}
+
+// ---- World Clock ----
+const cities=[
+  {name:'New York',tz:'America/New_York',flag:'🇺🇸',code:'EST'},
+  {name:'London',tz:'Europe/London',flag:'🇬🇧',code:'GMT'},
+  {name:'Dubai',tz:'Asia/Dubai',flag:'🇦🇪',code:'GST'},
+  {name:'Tokyo',tz:'Asia/Tokyo',flag:'🇯🇵',code:'JST'},
+  {name:'Singapore',tz:'Asia/Singapore',flag:'🇸🇬',code:'SGT'},
+  {name:'Sydney',tz:'Australia/Sydney',flag:'🇦🇺',code:'AEST'},
+  {name:'Paris',tz:'Europe/Paris',flag:'🇫🇷',code:'CET'},
+  {name:'Los Angeles',tz:'America/Los_Angeles',flag:'🇺🇸',code:'PST'},
+];
+function updateWorldClock(){
+  const now=new Date();
+  const istNow=new Date(now.toLocaleString('en-US',{timeZone:'Asia/Kolkata'}));
+  const grid=document.getElementById('worldClockGrid');
+  grid.innerHTML=cities.map(c=>{
+    const t=new Date(now.toLocaleString('en-US',{timeZone:c.tz}));
+    const h=t.getHours(),m=t.getMinutes();
+    const ampm=h>=12?'PM':'AM';
+    const h12=h%12||12;
+    const diffMin=Math.round((t-istNow)/60000);
+    const sign=diffMin>=0?'+':'';
+    const diffH=diffMin/60;
+    const diffStr=Number.isInteger(diffH)? sign+diffH+'h' : sign+diffH.toFixed(1)+'h';
+    const isDay=h>=6&&h<20;
+    return`<div class="wc-item">
+      <div class="wc-flag">${c.flag} ${isDay?'☀️':'🌙'}</div>
+      <div class="wc-city">${c.name}</div>
+      <div class="wc-time-val">${pad2(h12)}:${pad2(m)} ${ampm}</div>
+      <div class="wc-diff">${diffStr} from IST</div>
+      <div class="wc-tz">${c.code}</div>
+    </div>`;
+  }).join('');
+}
+
+// ---- Timezone Converter ----
+function convertTZ(){
+  const fromTz=document.getElementById('tzFrom').value;
+  const toTz=document.getElementById('tzTo').value;
+  const timeVal=document.getElementById('tzTime').value||'12:00';
+  const [hh,mm]=timeVal.split(':').map(Number);
+  const now=new Date();
+  now.setHours(hh,mm,0,0);
+  const fromDate=new Date(now.toLocaleString('en-US',{timeZone:fromTz}));
+  const toDate=new Date(now.toLocaleString('en-US',{timeZone:toTz}));
+  const diff=toDate-fromDate;
+  const result=new Date(now.getTime()-diff);
+  const rh=result.getHours(),rm=result.getMinutes();
+  const ampm=rh>=12?'PM':'AM';
+  const h12=rh%12||12;
+  document.getElementById('tzResult').innerHTML=`
+    <div class="tz-result-time">${pad2(h12)}:${pad2(rm)} ${ampm}</div>
+    <div class="tz-result-zone">${toTz.replace('_',' ').replace('/',' / ')}</div>
+  `;
+}
+
+// ---- Tabs ----
+function openTab(e,id){
+  const card=e.target.closest('.card')||document.body;
+  card.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  card.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  e.target.classList.add('active');
+  document.getElementById('tab-'+id).classList.add('active');
+}
+
+// ---- Stopwatch ----
+let swRunning=false,swStart2=0,swElapsed=0,swInterval=null,swLapCount=0;
+function swToggle(){
+  if(!swRunning){
+    swStart2=Date.now()-swElapsed;
+    swInterval=setInterval(swTick,50);
+    swRunning=true;
+    document.getElementById('swBtn').textContent='⏸ Pause';
+    document.getElementById('swLapBtn').disabled=false;
+  } else {
+    clearInterval(swInterval); swRunning=false;
+    document.getElementById('swBtn').textContent='▶ Resume';
+  }
+}
+function swTick(){
+  swElapsed=Date.now()-swStart2;
+  const total=Math.floor(swElapsed/100);
+  const ds=total%10,s=Math.floor(total/10)%60,m=Math.floor(total/600)%60,h=Math.floor(total/36000);
+  document.getElementById('swDisplay').textContent=pad2(h)+':'+pad2(m)+':'+pad2(s)+'.'+ds;
+  const pct=Math.min((swElapsed/3600000)*100,100);
+  document.getElementById('swProgress').style.width=pct+'%';
+}
+function swReset(){
+  clearInterval(swInterval); swRunning=false; swElapsed=0; swLapCount=0;
+  document.getElementById('swDisplay').textContent='00:00:00.0';
+  document.getElementById('swProgress').style.width='0%';
+  document.getElementById('swBtn').textContent='▶ Start';
+  document.getElementById('swLapBtn').disabled=true;
+  document.getElementById('swLaps').innerHTML='';
+}
+function swLap(){
+  swLapCount++;
+  const total=Math.floor(swElapsed/100);
+  const ds=total%10,s=Math.floor(total/10)%60,m=Math.floor(total/600)%60,h=Math.floor(total/36000);
+  const t=pad2(h)+':'+pad2(m)+':'+pad2(s)+'.'+ds;
+  const div=document.getElementById('swLaps');
+  div.innerHTML=`<span style="color:var(--accent);margin-right:8px">Lap ${swLapCount}</span>${t}<br>`+div.innerHTML;
+}
+
+// ---- Countdown Timer ----
+let timerRunning=false,timerInterval=null,timerLeft=300,timerTotal=300;
+function timerToggle(){
+  if(!timerRunning){
+    if(!timerInterval){
+      timerLeft=(parseInt(document.getElementById('tH').value)||0)*3600+(parseInt(document.getElementById('tM').value)||0)*60+(parseInt(document.getElementById('tS').value)||0);
+      timerTotal=timerLeft;
+    }
+    timerInterval=setInterval(timerTick,1000);
+    timerRunning=true;
+    document.getElementById('timerBtn').textContent='⏸ Pause';
+  } else {
+    clearInterval(timerInterval); timerInterval=null; timerRunning=false;
+    document.getElementById('timerBtn').textContent='▶ Resume';
+  }
+}
+function timerTick(){
+  timerLeft--;
+  const h=Math.floor(timerLeft/3600),m=Math.floor(timerLeft/60)%60,s=timerLeft%60;
+  document.getElementById('timerDisp').textContent=pad2(h)+':'+pad2(m)+':'+pad2(s);
+  const pct=(1-timerLeft/timerTotal)*100;
+  document.getElementById('timerProg').style.width=pct+'%';
+  if(timerLeft<=0){
+    clearInterval(timerInterval); timerInterval=null; timerRunning=false;
+    document.getElementById('timerBtn').textContent='▶ Start';
+    document.title='⏰ Timer Done! — Time&Date';
+    alert('⏰ Timer khatam ho gaya!');
+    document.title='Time & Date India';
+  }
+}
+function timerReset(){
+  clearInterval(timerInterval); timerInterval=null; timerRunning=false; timerLeft=0;
+  document.getElementById('timerDisp').textContent='00:00:00';
+  document.getElementById('timerProg').style.width='0%';
+  document.getElementById('timerBtn').textContent='▶ Start';
+}
+
+// ---- Calendar ----
+let calDate=new Date(2026,4,1);
+const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+function renderCal(){
+  document.getElementById('calMonthName').textContent=MONTHS[calDate.getMonth()]+' '+calDate.getFullYear();
+  const y=calDate.getFullYear(),m=calDate.getMonth();
+  const first=new Date(y,m,1).getDay();
+  const dim=new Date(y,m+1,0).getDate();
+  const dimp=new Date(y,m,0).getDate();
+  const today=new Date();
+  let html='';
+  ['Su','Mo','Tu','We','Th','Fr','Sa'].forEach(d=>html+=`<div class="cal-dn">${d}</div>`);
+  for(let i=0;i<first;i++) html+=`<div class="cal-d other">${dimp-first+1+i}</div>`;
+  for(let d=1;d<=dim;d++){
+    const isToday=d===today.getDate()&&m===today.getMonth()&&y===today.getFullYear();
+    const dow=(first+d-1)%7;
+    const isWe=dow===0||dow===6;
+    html+=`<div class="cal-d${isToday?' today':''}${isWe?' weekend':''}" onclick="selectDay(${d},${m},${y})">${d}</div>`;
+  }
+  const rem=(7-((first+dim)%7))%7;
+  for(let i=1;i<=rem;i++) html+=`<div class="cal-d other">${i}</div>`;
+  document.getElementById('calGridEl').innerHTML=html;
+}
+function calNav(d){calDate=new Date(calDate.getFullYear(),calDate.getMonth()+d,1);renderCal();}
+function selectDay(d,m,y){
+  const dn=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const dt=new Date(y,m,d);
+  document.getElementById('calSelected').textContent='Selected: '+dn[dt.getDay()]+', '+d+' '+MONTHS[m]+' '+y;
+}
+
+// ---- Countdown ----
+let cdInt=null;
+function startCD(){
+  const dt=document.getElementById('cdDate').value;
+  const tm=document.getElementById('cdTime').value||'00:00';
+  if(!dt){alert('Date select karein!');return;}
+  const target=new Date(dt+'T'+tm+':00');
+  const title=document.getElementById('cdTitle').value||'Event';
+  document.getElementById('cdEventName').textContent='⏳ '+title+' — '+target.toLocaleString('en-IN');
+  if(cdInt)clearInterval(cdInt);
+  function tick(){
+    const now=new Date();
+    const diff=target-now;
+    if(diff<=0){
+      document.getElementById('cdD').textContent=document.getElementById('cdH').textContent=document.getElementById('cdM').textContent=document.getElementById('cdS').textContent='0';
+      clearInterval(cdInt);
+      document.getElementById('cdEventName').textContent='🎉 '+title+' — Ho gaya!';
+      return;
+    }
+    document.getElementById('cdD').textContent=Math.floor(diff/86400000);
+    document.getElementById('cdH').textContent=pad2(Math.floor(diff/3600000)%24);
+    document.getElementById('cdM').textContent=pad2(Math.floor(diff/60000)%60);
+    document.getElementById('cdS').textContent=pad2(Math.floor(diff/1000)%60);
+  }
+  tick(); cdInt=setInterval(tick,1000);
+}
+
+// ---- Sun ----
+function updateSun(){
+  const now=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Kolkata'}));
+  const h=now.getHours(),m=now.getMinutes();
+  const totalMin=h*60+m;
+  const sunrise=5*60+48,sunset=19*60+14;
+  const dayLen=sunset-sunrise;
+  document.getElementById('sunDayLen').textContent=Math.floor(dayLen/60)+'h '+dayLen%60+'m';
+  let pct=0;
+  if(totalMin>=sunrise&&totalMin<=sunset) pct=Math.round((totalMin-sunrise)/dayLen*100);
+  else if(totalMin>sunset) pct=100;
+  document.getElementById('sunArcFill').style.width=pct+'%';
+  document.getElementById('sunNowTime').textContent='Current: '+pad2(h)+':'+pad2(m);
+  // Moon phase
+  const ref=new Date(2000,0,6);
+  const diffDays=(now-ref)/86400000;
+  const lunarDay=diffDays%29.53;
+  const phases=[
+    {e:'🌑',n:'New Moon',pct:'0%'},
+    {e:'🌒',n:'Waxing Crescent',pct:'25%'},
+    {e:'🌓',n:'First Quarter',pct:'50%'},
+    {e:'🌔',n:'Waxing Gibbous',pct:'75%'},
+    {e:'🌕',n:'Full Moon',pct:'100%'},
+    {e:'🌖',n:'Waning Gibbous',pct:'75%'},
+    {e:'🌗',n:'Last Quarter',pct:'50%'},
+    {e:'🌘',n:'Waning Crescent',pct:'25%'},
+  ];
+  const idx=Math.floor((lunarDay/29.53)*8)%8;
+  document.getElementById('moonEmoji').textContent=phases[idx].e;
+  document.getElementById('moonName').textContent=phases[idx].n;
+  document.getElementById('moonPct').textContent='Illumination: '+phases[idx].pct;
+}
+
+// ---- Date Calculator ----
+function calcDuration(){
+  const a=new Date(document.getElementById('dc1').value),b=new Date(document.getElementById('dc2').value);
+  if(isNaN(a)||isNaN(b)){alert('Dono dates select karein');return;}
+  const diff=Math.abs(b-a);
+  const d=Math.floor(diff/86400000);
+  const yr=Math.floor(d/365);
+  const rem=d-yr*365;
+  const mo=Math.floor(rem/30);
+  const days=rem-mo*30;
+  document.getElementById('dcDays').textContent=d+' Days';
+  document.getElementById('dcDetail').textContent=yr+' years, '+mo+' months, '+days+' days · '+Math.floor(diff/3600000)+' hours · '+Math.floor(diff/60000)+' minutes';
+  document.getElementById('dcResult').style.display='block';
+}
+function calcAdd(){
+  const base=new Date(document.getElementById('addDate').value);
+  if(isNaN(base)){alert('Start date select karein');return;}
+  const op=document.getElementById('addOp').value;
+  const num=parseInt(document.getElementById('addNum').value)||0;
+  const unit=document.getElementById('addUnit').value;
+  const sign=op==='add'?1:-1;
+  const result=new Date(base);
+  if(unit==='day') result.setDate(result.getDate()+sign*num);
+  else if(unit==='week') result.setDate(result.getDate()+sign*num*7);
+  else if(unit==='month') result.setMonth(result.getMonth()+sign*num);
+  else if(unit==='year') result.setFullYear(result.getFullYear()+sign*num);
+  const dn=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  document.getElementById('addResultDate').textContent=result.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+  document.getElementById('addResultDay').textContent=dn[result.getDay()];
+  document.getElementById('addResult').style.display='block';
+}
+
+// ---- Holidays ----
+const holidays=[
+  {d:15,m:7,name:'Independence Day',flag:'🇮🇳'},
+  {d:2,m:9,name:'Gandhi Jayanti',flag:'🕊️'},
+  {d:20,m:9,name:'Dussehra',flag:'🏹'},
+  {d:20,m:9,name:'Navratri End',flag:'🪔'},
+  {d:31,m:9,name:'Halloween (Int.)',flag:'🎃'},
+  {d:20,m:10,name:'Diwali',flag:'🪔'},
+  {d:25,m:11,name:'Christmas',flag:'🎄'},
+  {d:1,m:0,name:'New Year 2027',flag:'🎆'},
+];
+function renderHolidays(){
+  const now=new Date();
+  const upcoming=holidays.filter(h=>{
+    const dt=new Date(2026,h.m,h.d);
+    return dt>=now;
+  }).slice(0,5);
+  const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  document.getElementById('holidayList').innerHTML=upcoming.map(h=>{
+    const dt=new Date(2026,h.m,h.d);
+    const diffD=Math.ceil((dt-now)/86400000);
+    return`<div class="holiday-item">
+      <div class="holiday-date-badge">
+        <div class="holiday-date-d">${h.d}</div>
+        <div class="holiday-date-m">${months[h.m]}</div>
+      </div>
+      <div>
+        <div class="holiday-name">${h.flag} ${h.name}</div>
+        <div class="holiday-days">${diffD>0?'in '+diffD+' days':'Today!'}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ---- Set default dates ----
+const today=new Date();
+const todayStr=today.toISOString().split('T')[0];
+document.getElementById('dc1').value=todayStr;
+document.getElementById('dc2').value=new Date(today.getTime()+30*86400000).toISOString().split('T')[0];
+document.getElementById('addDate').value=todayStr;
+document.getElementById('cdDate').value=new Date(2026,11,31).toISOString().split('T')[0];
+
+// ---- Init ----
+updateHero();
+updateWorldClock();
+updateSun();
+renderCal();
+renderHolidays();
+setInterval(()=>{updateHero();updateWorldClock();},1000);
+setInterval(updateSun,60000);
+</script>
+
+</body>
+</html>
